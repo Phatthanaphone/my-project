@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sidebar Menu</title>
+    <link rel="stylesheet" href="sidebar.css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Akahon</h2>
+            <button class="menu-toggle" id="menu-toggle">&#9776;</button> <!-- Add an id here -->
+        </div>
+        <div class="search-container">
+            <input type="search" placeholder="Search...">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#"><span class="icon">&#x1F4D6;</span> Dashboard</a></li>
+            <li><a href="#"><span class="icon">&#x1F464;</span> User</a></li>
+            <li><a href="#"><span class="icon">&#x1F4AC;</span> Messages</a></li>
+            <li><a href="#"><span class="icon">&#x1F4CA;</span> Analytics</a></li>
+            <li><a href="#"><span class="icon">&#x2764;</span> Favorites</a></li>
+            <li><a href="#"><span class="icon">&#x1F4D6;</span> Library</a></li>
+            <li><a href="#"><span class="icon">&#x1F3B5;</span> Music</a></li>
+            <li><a href="#"><span class="icon">&#x1F4F7;</span> Photos</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <!-- <img src="user-avatar.png" alt="User Avatar" class="user-avatar"> -->
+            <div class="user-info">
+                <!-- <span class="user-name">Fayzullo Saidakbarov</span>
+                <span class="user-role">Frontend vue developer</span> -->
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+
+
+        <!-- Main content goes here -->
+    </div>
+
+    <!-- JavaScript for sidebar toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var menuToggle = document.getElementById('menu-toggle');
+            var sidebar = document.getElementById('sidebar');
+
+            menuToggle.addEventListener('click', function () {
+                sidebar.classList.toggle('collapsed');
+                menuToggle.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+        <!-- Inside sidebar.html -->
+<!-- <ul class="nav-links">
+    <li><a href="#"><span class="icon">&#x1F4D6;</span> Dashboard</a></li>
+    <li><a href="#"><span class="icon">&#x1F464;</span> User</a></li>
+    <li><a href="#"><span class="icon">&#x1F4AC;</span> Messages</a></li>
+    <li><a href="#"><span class="icon">&#x1F4CA;</span> Analytics</a></li>
+    <li><a href="#"><span class="icon">&#x1F3E0;</span> Home</a></li>
+    <li><a href="#"><span class="icon">&#x2699;</span> Settings</a></li>
+    <li><a href="#"><span class="icon">&#x2709;</span> Email</a></li>
+    <li><a href="#"><span class="icon">&#x2764;</span> Favorites</a></li>
+    <li><a href="#"><span class="icon">&#x2B50;</span> Starred</a></li>
+    <li><a href="#"><span class="icon">&#x1F4D6;</span> Library</a></li>
+    <li><a href="#"><span class="icon">&#x1F3B5;</span> Music</a></li>
+    <li><a href="#"><span class="icon">&#x1F4F7;</span> Photos</a></li>
+    <li><a href="#"><span class="icon">&#x2708;</span> Travel</a></li>
+    <li><a href="#"><span class="icon">&#x1F697;</span> Transportation</a></li>
+
+
+</ul> -->

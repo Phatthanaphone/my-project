@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Electron Data Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #003d82;
+        }
+    </style>
+</head>
+<body>
+    
+    <form id="dataForm">
+        <h1>Enter Your Details</h1>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Name" required>
+        </div>
+        <div class="form-group">
+            <label for="surname">Surname:</label>
+            <input type="text" id="surname" placeholder="Surname" required>
+        </div>
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" placeholder="Age" required>
+        </div>
+        <button type="submit">Save</button>
+        <button id="goToAboutPage">Go to About Page</button>
+    </form>
+
+    <script>
+
+        const { ipcRenderer } = require('electron');
+
+        document.getElementById('dataForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const surname = document.getElementById('surname').value;
+            const age = document.getElementById('age').value;
+
+            const data = { name, surname, age };
+            ipcRenderer.send('save-data', data);
+        });
+
+        document.getElementById('goToAboutPage').addEventListener('click', () => {
+            ipcRenderer.send('navigate', 'about.html');
+        });
+    </script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Electron Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+
+        #output {
+            margin-top: 20px;
+            color: blue;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Input Form</h1>
+    <form id="inputForm">
+        <input type="text" id="inputField" placeholder="Enter some text">
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="data-container"></div>
+    <script>
+        const { ipcRenderer } = require('electron');
+
+        document.getElementById('inputForm').addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevents the default form submission behavior
+            const input = document.getElementById('inputField').value;
+            ipcRenderer.send('form-submission', input);
+        });
+
+          // Send a request to main process to get data
+  ipcRenderer.send('get-data');
+
+// Listen for the data from main process
+ipcRenderer.on('send-data', (event, data) => {
+  if (data) {
+    // Assuming you have a div with id='data-container' in your HTML
+    document.getElementById('data-container').innerText = data;
+  } else {
+    // Handle error or show a message
+    console.error('No data received');
+  }
+});
+    </script>
+</body>
+</html> -->

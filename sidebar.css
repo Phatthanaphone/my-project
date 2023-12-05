@@ -1,0 +1,139 @@
+/* style.css */
+body {
+    padding-top: 0.1rem;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    height: 100vh;
+  /* Dark background for the content */
+    color: white;
+    width: 15px;
+}
+
+.sidebar {
+    width: 240px;
+    background-color: #1f2a37; /* Dark sidebar background */
+    padding: 1rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #2c3e50;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.search-container {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 0.5rem;
+    background: #2c3e50;
+    border: none;
+    color: white;
+    border-radius: 4px;
+}
+
+.nav-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    padding: 0.5rem 0;
+    display: block;
+    transition: background 0.3s ease;
+}
+
+.nav-links a:hover {
+    background: #3b4b59;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid #2c3e50;
+    text-align: center;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+}
+
+.user-info {
+    font-size: 0.8rem;
+}
+
+.user-name {
+    font-weight: bold;
+}
+
+.user-role {
+    color: #7a8288;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 1rem;
+}
+
+.sidebar.collapsed {
+    width: 80px; /* Set a smaller width for the collapsed state */
+    /* You might want to adjust padding or other styles for the collapsed state as well */
+}
+
+/* Adjust the visibility of elements within the sidebar when collapsed */
+.sidebar.collapsed .nav-links a,
+.sidebar.collapsed .sidebar-footer,
+.sidebar.collapsed .search-container {
+    display: none; /* Hide elements when collapsed */
+}
+
+/* Optional: Style to rotate menu button or change icon when active */
+.menu-toggle.active {
+    transform: rotate(90deg); /* Example transformation */
+}
+
+/* style.css */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    height: 100vh;
+    color: white;
+}
+
+.sidebar {
+    width: 240px; /* Width of the visible sidebar */
+    background-color: #1f2a37; /* Dark sidebar background */
+    padding: 1rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    transform: translateX(0); /* Start with sidebar visible */
+    transition: transform 0.3s ease; /* Smooth transition for toggling visibility */
+}
+
+.sidebar.collapsed {
+    transform: translateX(-100%); /* Hide sidebar off-screen */
+}
+
+/* Rest of your CSS */
