@@ -1,17 +1,33 @@
-name: Jekyll site CI
+name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - main
+
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: 
+      - self-hosted
+      - labelHost
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the site in the jekyll/builder container
-      run: |
-        docker run \
-        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # - name: Build and test
+      #   run: |
+      #     # Add your build and test commands here
+      #     echo "Building and testing..."
+
+      - name: Set up .env file
+        run: |
+          echo "${{ secrets.ENV }}" > .env
+          attrib +r .env
+
+      - name: Build and run Docker Compose
+        run: |
+          # Build and run Docker Compose
+          docker compose up --build -d
+          docker image prune -f
+
